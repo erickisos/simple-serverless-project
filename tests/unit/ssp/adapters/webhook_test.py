@@ -1,42 +1,53 @@
+import pytest
 from pytest import fixture
 
-from ssp.adapters.webhook import (
-    internal_to_wire,
-    wire_to_internal,
-)
-import pytest
+from ssp.adapters.webhook import internal_to_wire, wire_to_internal
 from ssp.models.webhook import WebhookMessage
 
 
-@fixture
-def webhook_message(body, request_id, request_timestamp):
-    return WebhookMessage(
-        body=body,
-        request_id=request_id,
-        request_timestamp=request_timestamp,
-    )
-
-
-@fixture
-def wired(body, headers):
-    return {
-        'body': body,
-        'headers': headers,
-    }
-
-
 @pytest.mark.parametrize(
-    'body, request_id, request_timestamp, headers',
+    'webhook_message, wired',
     [
         (
-            '{"foo": "bar"}',
-            '123',
-            '456',
-            {'X-Request-ID': '123', 'X-Request-Timestamp': '456'},
-        )
+            WebhookMessage(
+                body='body',
+                request_id='request_id',
+                request_timestamp='request_timestamp',
+            ),
+            {
+                'body': 'body',
+                'headers': {
+                    'X-Request-ID': 'request_id',
+                    'X-Request-Timestamp': 'request_timestamp',
+                },
+            },
+        ),
     ],
-    indirect=True,
 )
 def test_wire_to_internal(webhook_message, wired):
     value = wire_to_internal(wired)
     assert webhook_message == value
+
+
+@pytest.mark.parametrize(
+    'webhook_message, wired',
+    [
+        (
+            WebhookMessage(
+                body='body',
+                request_id='request_id',
+                request_timestamp='request_timestamp',
+            ),
+            {
+                'body': 'body',
+                'headers': {
+                    'content-type': 'application/json',
+                },
+                'statusCode': 200,
+            },
+        ),
+    ],
+)
+def test_internal_to_wire(webhook_message, wired):
+    value = internal_to_wire(webhook_message)
+    assert wired == value

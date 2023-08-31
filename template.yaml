@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  This is a sample template for a serverless application that includes a
+  Lambda function, an API Gateway REST API, and a DynamoDB table.
+
+Globals:
+  Api:
+    TracingEnabled: True
+
+Resources:
+  MainApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: v1
+  SimpleLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: dist/
+      CompatibleRuntimes:
+        - python3.9
+  WebhookFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: Main entry point for the API
+      Runtime: python3.9
+      CodeUri: handlers/
+      Handler: simple_webhook.webhook_handler
+      Tracing: Active
+      Layers:
+        - !Ref SimpleLayer
+      Events:
+        NewWebhook:
+          Type: Api
+          Properties:
+            Path: /webhook
+            Method: POST
+            RestApiId: !Ref MainApi

@@ -21,6 +21,6 @@ def internal_to_wire(response: WebhookMessage) -> LambdaApiResponse:
     """
     return {
         'statusCode': 200,
-        'headers': {'Content-Type': 'application/json'},
+        'headers': {'content-type': 'application/json'},
         'body': response.body,
     }
