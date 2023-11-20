@@ -9,7 +9,7 @@ packages = [{ include = "ssp", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-pydantic = { extras = ["dataclasses"], version = "^2.4.2" }
+pydantic = { extras = ["dataclasses"], version = "^2.5.1" }
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.6.1"
