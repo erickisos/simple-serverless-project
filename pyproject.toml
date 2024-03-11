@@ -12,7 +12,7 @@ python = "^3.9"
 pydantic = { extras = ["dataclasses"], version = "^2.5.2" }
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.7.1"
+mypy = "^1.9.0"
 black = { version = "^23.11.0", allow-prereleases = true }
 isort = "^5.13.2"
 bandit = "^1.7.6"
