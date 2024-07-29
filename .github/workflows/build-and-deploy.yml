@@ -7,6 +7,8 @@ on:
 
 jobs:
   build:
+    # Deberías activar este workflow para poder hacer el deploy
+    if: false
     name: Build the main package and deploy
     runs-on: ubuntu-latest
     steps:
@@ -14,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.11
       - name: Set up Poetry
         uses: Gr1N/setup-poetry@v9
       - name: Restoring cache

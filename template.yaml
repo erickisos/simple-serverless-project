@@ -15,17 +15,18 @@ Resources:
       StageName: v1
   SimpleLayer:
     Type: AWS::Serverless::LayerVersion
+    Description: Esta Layer almacenará las dependencias y el paquete de Python que representa a tu aplicación. Es necesario "empaquetar" tu código para que pueda ser utilizado por la función Lambda.
     Properties:
       ContentUri: dist/
       CompatibleRuntimes:
-        - python3.9
+        - python3.11
   WebhookFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Description: Main entry point for the API
-      Runtime: python3.9
+      Description: Esta es una función lambda de ejemplo que referencía al directorio de handlers (unidad independiente de tu lógica de negocio).
+      Runtime: python3.11
       CodeUri: handlers/
-      Handler: simple_webhook.webhook_handler
+      Handler: webhook.webhook_handler
       Tracing: Active
       Layers:
         - !Ref SimpleLayer
