@@ -7,6 +7,8 @@ on:
 
 jobs:
   build:
+    # Deberías activar este workflow para poder hacer el deploy
+    if: false
     name: Build the main package and deploy
     runs-on: ubuntu-latest
     steps:
