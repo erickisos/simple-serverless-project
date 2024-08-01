@@ -1,5 +1,3 @@
-from typing import TypedDict
+from typing import Any, Dict, Text
 
-
-class Context(TypedDict):
-    pass
+Context = Dict[Text, Any]
