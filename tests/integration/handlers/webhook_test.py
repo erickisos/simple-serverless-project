@@ -12,7 +12,7 @@ mock_config: Context = {'some-config': 'some-value'}
 
 @given(event=event_with_json_body(WebhookMessage))
 def test_webhook(event: LambdaApiRequest):
-    """Test that no matter which event we receive, the answer is the same"""
+    """Test that no matter which event we receive, the answer is the same."""
     expected = {
         'headers': {
             'content-type': 'application/json',

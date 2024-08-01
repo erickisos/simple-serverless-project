@@ -1,6 +1,5 @@
 from typing import Dict, Literal, Text, TypedDict
 
-
 Header = Literal[
     'X-Request-ID', 'X-Request-Timestamp', 'content-type', 'Content-Type'
 ]

@@ -3,7 +3,5 @@ from ..models.webhook import WebhookMessage
 
 
 def process(message: WebhookMessage, _: Context) -> WebhookMessage:
-    """
-    Process the webhook message.
-    """
+    """Process the webhook message."""
     return message

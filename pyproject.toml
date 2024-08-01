@@ -13,7 +13,7 @@ pydantic = { extras = ["dataclasses"], version = "^2.8.2" }
 aws-xray-sdk = "^2.11.0"
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.11.0"
+mypy = "^1.11.1"
 black = { version = "^24.4.2", allow-prereleases = true }
 isort = "^5.13.2"
 bandit = "^1.7.9"
@@ -22,7 +22,7 @@ pytest = "^8.3.2"
 pre-commit = "^3.7.1"
 hypothesis = "^6.92.1"
 codecov = "^2.1.13"
-aws-sam-cli = "^1.120.0"
+aws-sam-cli = "^1.121.0"
 
 [build-system]
 requires = ["poetry-core"]
