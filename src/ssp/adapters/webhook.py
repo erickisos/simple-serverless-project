@@ -9,8 +9,8 @@ def wire_to_internal(event: LambdaApiRequest) -> WebhookMessage:
     """
     return WebhookMessage(
         body=event['body'],
-        request_id=event['headers']['X-Request-ID'],
-        request_timestamp=event['headers']['X-Request-Timestamp'],
+        request_id=event['headers'].get('X-Request-ID') or '',
+        request_timestamp=event['headers'].get('X-Request-Timestamp') or '',
     )
 
 
