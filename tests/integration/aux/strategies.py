@@ -8,7 +8,7 @@ from ssp.schema.aws import LambdaApiRequest
 
 @composite
 def event_with_json_body(draw, body):
-    """Add any Pydantic dataclass as body of ApiEvent"""
+    """Add any Pydantic dataclass as body of ApiEvent."""
     api_event = draw(from_type(LambdaApiRequest))
     api_body = draw(from_type(body))
     return {
