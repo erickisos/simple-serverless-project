@@ -5,6 +5,9 @@ on:
     branches:
       - 'main'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
 jobs:
   build:
     # Deberías activar este workflow para poder hacer el deploy
