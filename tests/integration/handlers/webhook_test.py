@@ -1,7 +1,4 @@
-import json
-
 from hypothesis import given
-from pytest import raises
 
 from ssp.models.context import Context
 from ssp.models.webhook import WebhookMessage
@@ -10,9 +7,7 @@ from ssp.schema.aws import LambdaApiRequest
 
 from ..aux.strategies import event_with_json_body
 
-mock_config: Context = {
-    'some-config': 'some-value'
-}
+mock_config: Context = {'some-config': 'some-value'}
 
 
 @given(event=event_with_json_body(WebhookMessage))
