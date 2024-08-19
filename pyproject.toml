@@ -20,7 +20,7 @@ bandit = "^1.7.9"
 flake8 = "^7.0.0"
 pytest = "^8.3.2"
 pre-commit = "^3.7.1"
-hypothesis = "^6.92.1"
+hypothesis = "^6.111.1"
 codecov = "^2.1.13"
 aws-sam-cli = "^1.121.0"
 
