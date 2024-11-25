@@ -22,7 +22,7 @@ pytest = "^8.3.2"
 pre-commit = "^3.7.1"
 hypothesis = "^6.119.4"
 codecov = "^2.1.13"
-aws-sam-cli = "^1.121.0"
+aws-sam-cli = "^1.131.0"
 
 [build-system]
 requires = ["poetry-core"]
