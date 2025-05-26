@@ -9,7 +9,7 @@ packages = [{ include = "ssp", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.11.0"
-pydantic = { extras = ["dataclasses"], version = "^2.10.6" }
+pydantic = { extras = ["dataclasses"], version = "^2.11.5" }
 aws-xray-sdk = "^2.11.0"
 
 [tool.poetry.group.dev.dependencies]
