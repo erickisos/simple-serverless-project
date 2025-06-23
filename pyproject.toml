@@ -18,7 +18,7 @@ black = { version = "^24.10.0", allow-prereleases = true }
 isort = "^5.13.2"
 bandit = "^1.8.0"
 flake8 = "^7.1.1"
-pytest = "^8.3.2"
+pytest = "^8.4.1"
 pre-commit = "^4.0.1"
 hypothesis = "^6.130.9"
 codecov = "^2.1.13"
