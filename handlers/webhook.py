@@ -1,6 +1,5 @@
-import os
 
-from aws_xray_sdk.core import patch_all, xray_recorder  # type: ignore
+from aws_xray_sdk.core import patch_all  # type: ignore
 
 from ssp.models.context import Context
 from ssp.ports.http_inputs import webhook

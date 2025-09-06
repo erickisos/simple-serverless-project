@@ -1,32 +1,43 @@
-[tool.poetry]
+[project]
 name = "ssp"
 version = "0.1.0"
 description = "Simple template for serverless projects"
-authors = ["Erick G. Islas-Osuna <erickisos653@gmail.com>"]
+authors = [{ name = "Erick G. Islas-Osuna", email = "erickisos653@gmail.com" }]
+requires-python = ">=3.11.0,<4"
 readme = "README.md"
-license = "GPLv3"
-packages = [{ include = "ssp", from = "src" }]
+license = "GPL-3.0"
+dependencies = [
+    "pydantic>=2.11.7,<3",
+    "aws-xray-sdk>=2.11.0,<3",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11.0"
-pydantic = { extras = ["dataclasses"], version = "^2.11.7" }
-aws-xray-sdk = "^2.11.0"
+[dependency-groups]
+dev = [
+    "mypy>=1.17.1,<2",
+    "black>=24.10.0,<25",
+    "isort>=5.13.2,<6",
+    "bandit>=1.8.0,<2",
+    "flake8>=7.3.0,<8",
+    "pytest>=8.4.1,<9",
+    "pre-commit>=4.0.1,<5",
+    "hypothesis>=6.137.1,<7",
+    "codecov>=2.1.13,<3",
+    "aws-sam-cli>=1.142.1,<2",
+    "ruff>=0.12.12",
+]
 
-[tool.poetry.group.dev.dependencies]
-mypy = "^1.17.1"
-black = { version = "^24.10.0", allow-prereleases = true }
-isort = "^5.13.2"
-bandit = "^1.8.0"
-flake8 = "^7.3.0"
-pytest = "^8.4.1"
-pre-commit = "^4.3.0"
-hypothesis = "^6.137.1"
-codecov = "^2.1.13"
-aws-sam-cli = "^1.142.1"
+[tool.hatch.build.targets.sdist]
+include = ["src/ssp"]
+
+[tool.hatch.build.targets.wheel]
+include = ["src/ssp"]
+
+[tool.hatch.build.targets.wheel.sources]
+"src/ssp" = "ssp"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.black]
 line-length = 79
