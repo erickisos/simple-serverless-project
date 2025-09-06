@@ -24,23 +24,13 @@ repos:
       - id: mypy
         additional_dependencies:
           - pydantic
-  - repo: https://github.com/psf/black
-    rev: 24.4.2
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.3
     hooks:
-      - id: black
-        language_version: python3.11
-  - repo: https://github.com/pycqa/isort
-    rev: 5.13.2
-    hooks:
-      - id: isort
-        name: isort (python)
-  - repo: https://github.com/pycqa/flake8
-    rev: 7.1.0
-    hooks:
-      - id: flake8
-        name: flake8 (python)
+      - id: ruff
+        name: Ruff (python)
   - repo: https://github.com/myint/docformatter
-    rev: v1.7.5
+    rev: v1.7.6
     hooks:
       - id: docformatter
         args: ["--wrap-descriptions", "0"]
