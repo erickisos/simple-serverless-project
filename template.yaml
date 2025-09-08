@@ -19,12 +19,12 @@ Resources:
     Properties:
       ContentUri: dist/
       CompatibleRuntimes:
-        - python3.11
+        - python3.12
   WebhookFunction:
     Type: AWS::Serverless::Function
     Properties:
       Description: Esta es una función lambda de ejemplo que referencía al directorio de handlers (unidad independiente de tu lógica de negocio).
-      Runtime: python3.11
+      Runtime: python3.12
       CodeUri: handlers/
       Handler: webhook.webhook_handler
       Tracing: Active

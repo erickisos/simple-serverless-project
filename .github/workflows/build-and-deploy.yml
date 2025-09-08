@@ -22,7 +22,7 @@ jobs:
           version: latest
           enable-cache: true
           activate-environment: true
-          python-version: "3.11"
+          python-version: "3.12"
       - name: Install Dependencies
         run: uv sync --all-extras
       - uses: aws-actions/setup-sam@v2

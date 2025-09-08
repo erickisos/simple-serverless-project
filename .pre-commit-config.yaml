@@ -29,6 +29,9 @@ repos:
     hooks:
       - id: ruff
         name: Ruff (python)
+        args:
+          - "--fix"
+          - "--show-fixes"
   - repo: https://github.com/myint/docformatter
     rev: v1.7.6
     hooks:
