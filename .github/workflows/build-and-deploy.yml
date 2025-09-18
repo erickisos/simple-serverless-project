@@ -22,7 +22,7 @@ jobs:
           version: latest
           enable-cache: true
           activate-environment: true
-          python-version: "3.11"
+          python-version: "3.13"
       - name: Install Dependencies
         run: uv sync --all-extras
       - uses: aws-actions/setup-sam@v2
@@ -32,7 +32,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Generate requirements.txt file
-        run: uv export --format requirements.txt > requirements.txt
+        run: uv export --no-dev --format requirements.txt > requirements.txt
       - name: Create layer directory
         run: mkdir -p dist/python/
       - name: Install dependencies

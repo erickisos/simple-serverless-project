@@ -3,7 +3,7 @@ default_stages:
   - push
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v6.0.0
     hooks:
       - id: check-added-large-files
       - id: debug-statements
@@ -14,23 +14,25 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
   - repo: https://github.com/awslabs/cfn-python-lint
-    rev: "v1.9.3" # The version of cfn-lint to use
+    rev: "v1.39.1" # The version of cfn-lint to use
     hooks:
       - id: cfn-python-lint
         files: template\.yaml
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "v1.11.1" # Use the sha / tag you want to point at
+  - repo: local
     hooks:
-      - id: mypy
-        additional_dependencies:
-          - pydantic
+      - id: ty-check
+        name: Run ty check
+        entry: uvx ty check
+        language: system
+        types: [python]
+        pass_filenames: false # This ensures 'ty check' runs on all relevant files
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.8.3
+    rev: v0.13.0
     hooks:
       - id: ruff
         name: Ruff (python)
   - repo: https://github.com/myint/docformatter
-    rev: v1.7.6
+    rev: v1.7.7
     hooks:
       - id: docformatter
         args: ["--wrap-descriptions", "0"]

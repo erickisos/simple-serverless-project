@@ -10,8 +10,8 @@ Los siguientes comandos te permitirán generar el directorio `dist` que será ut
 
 ```bash
 mkdir -p dist/python/
-poetry export -o requirements.txt
-pip install . -t dist/python/
+uv export --no-dev --format requirements.txt > requirements.txt
+uv pip install . --target dist/python/
 ```
 
 ### Ejecutar la API localmente
