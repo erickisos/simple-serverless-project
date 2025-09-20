@@ -20,20 +20,38 @@ Resources:
       ContentUri: dist/
       CompatibleRuntimes:
         - python3.13
-  WebhookFunction:
+  CheckStockFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Description: Esta es una función lambda de ejemplo que referencía al directorio de handlers (unidad independiente de tu lógica de negocio).
+      Description: Esta es una función de ejemplo que te permite revisar el stock de un producto en alamcen
       Runtime: python3.13
       CodeUri: handlers/
-      Handler: webhook.webhook_handler
+      Handler: api.check_stock
       Tracing: Active
       Layers:
         - !Ref SimpleLayer
       Events:
-        NewWebhook:
+        GetStock:
           Type: Api
           Properties:
-            Path: /webhook
-            Method: POST
+            Path: /store/{sku}
+            Method: GET
+            RestApiId: !Ref MainApi
+
+  AddProductToCartFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: Esta es una función que te permite agregar un producto al carrito si hay existencias suficientes.
+      Runtime: python3.13
+      CodeUri: handlers/
+      Handler: api.add_to_cart
+      Tracing: Active
+      Layers:
+        - !Ref SimpleLayer
+      Events:
+        AddProduct:
+          Type: Api
+          Properties:
+            Path: /cart
+            Method: PUT
             RestApiId: !Ref MainApi

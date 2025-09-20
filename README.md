@@ -3,6 +3,7 @@
 Esta "Github Template" te permitirá generar un proyecto serverless sencillo utilizando Python, AWS SAM y Github Actions (CI/CD).
 Por default, está diseñada utilizando la estructura de un proyecto python con Poetry, y toma ventaja de las herramientas como AWS Lambda Layers para reducir la cantidad de código inicial necesario para conectarlo con la plataforma.
 
+El contenido de esta plantilla ejemplifica un Punto de Venta muy básico, que interactúa con un almacen para obtener productos, vender productos o incluso registrar nuevas entregas de reabastecimiento, las convenciones del código están en inglés, aún cuando parte de la documentación podría estar en español.
 
 ## Cómo usar esta plantilla?
 
